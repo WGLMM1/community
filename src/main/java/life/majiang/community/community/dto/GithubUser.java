@@ -5,6 +5,7 @@ public class GithubUser {
     private String name;
     private Long id;
     private String bio;
+
     /*
     * GitHub中的头像
      */
@@ -49,5 +50,16 @@ public class GithubUser {
 
     public void setAvatar_url(String avatar_url) {
         this.avatar_url = avatar_url;
+    }
+
+    @Override
+    public String toString() {
+        return "GithubUser{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", bio='" + bio + '\'' +
+                ", avatar_url='" + avatar_url + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
