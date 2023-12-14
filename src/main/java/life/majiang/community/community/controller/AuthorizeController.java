@@ -20,13 +20,13 @@ public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
 
-    @Value("github.client.id")
+    @Value("${github.client.id}")//注意@Value("github.client.id")--->直接去成了字符串"github.client.id"，没有去取对应的值
     private String clientId;
 
-    @Value("github.client.secret")
+    @Value("${github.client.secret}")
     private String clinetSecrect;
 
-    @Value("github.redirect.url")
+    @Value("${github.redirect.url}")
     private String clientRedirectUrl;
 
     @Resource
@@ -41,10 +41,10 @@ public class AuthorizeController {
         accessTokenDTO.setRedirect_uri(clientRedirectUrl);
         accessTokenDTO.setClient_id(clientId);
         accessTokenDTO.setClient_secret(clinetSecrect);
+        System.out.println(accessTokenDTO.getRedirect_uri());
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-//        System.out.println(user.getName());
         if (githubUser != null) {
             //登录成功，写cookie和session
             User user = new User();
