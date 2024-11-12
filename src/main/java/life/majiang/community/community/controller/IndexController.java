@@ -19,6 +19,9 @@ public class IndexController {
     @GetMapping("/")//一个反斜杠都不写，表示根目录s
     public String index(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
+        if (cookies == null) {
+            return "index";
+        }
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("token")) {
                 String token = cookie.getValue();

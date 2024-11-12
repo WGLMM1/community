@@ -12,6 +12,8 @@ public class GithubUser {
     private String avatar_url;
     private String email;
 
+
+
     public String getEmail() {
         return email;
     }
